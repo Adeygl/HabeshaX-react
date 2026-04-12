@@ -1,16 +1,21 @@
 import { useState } from 'react';
+import type { AxiosInstance } from 'axios';
+type LoginProps = {
+  setAuth: (value: boolean) => void;
+  api: AxiosInstance;
+};
 
-const Login = ({ setAuth, api }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+const Login: React.FC<LoginProps> = ({ setAuth, api }) => {
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
-  const login = async () => {
+  const login = async (): Promise<void> => {
     try {
       const res = await api.post('/auth/login', { username, password });
       localStorage.setItem('token', res.data.token);
       alert("Login success");
       setAuth(true);
-    } catch (e) {
+    } catch (e: any) {
       alert("Login error: " + (e?.response?.data?.message || e.message));
     }
   };
@@ -23,13 +28,20 @@ const Login = ({ setAuth, api }) => {
         <input
           placeholder="Username"
           className="w-full p-2 border mb-3 rounded"
-          onChange={(e) => setUsername(e.target.value)}
+          value={username}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setUsername(e.target.value)
+          }
         />
+
         <input
           placeholder="Password"
           type="password"
           className="w-full p-2 border mb-3 rounded"
-          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setPassword(e.target.value)
+          }
         />
 
         <button
