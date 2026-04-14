@@ -8,7 +8,7 @@ import Support from './pages/Support';
 import Login from './pages/Login';
 import Order from "./pages/Orders"
 const API = axios.create({
-  baseURL: 'http://localhost:5000/api'
+  baseURL: 'https://habeshaxnode-9821a8586656.herokuapp.com/api'
 });
 
 const App: React.FC = () => {
