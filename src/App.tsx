@@ -7,6 +7,7 @@ import Deposit from './pages/Deposit';
 import Support from './pages/Support';
 import Login from './pages/Login';
 import Order from "./pages/Orders"
+import SendMessage from "./pages/SendMessage"
 const API = axios.create({
   baseURL: 'https://habeshaxnode-9821a8586656.herokuapp.com/api'
 });
@@ -28,6 +29,7 @@ const App: React.FC = () => {
             <Route path="/deposit" element={<Deposit />} />
             <Route path="/support" element={<Support />} />
             <Route path="/orders" element={<Order />} />
+            <Route path="/sendm" element={<SendMessage />} />
             <Route path="*" element={<Navigate to="/" />} />
           </>
         ) : (
