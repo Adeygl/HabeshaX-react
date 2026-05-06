@@ -21,7 +21,7 @@ export interface Order {
   package_name?: string;
   package_price?: number;
   status: 'pending' | 'processing' | 'delivered' | 'declined' | 'cancelled';
-  payment_status: 'pending' | 'paid' | 'refunded';
+  payment_status: 'pending' | 'paid' | 'refunded' | "completed";
   topup_status: 'pending' | 'processing' | 'delivered' | 'failed';
   sell_price: number;
   payment_method?: string;
